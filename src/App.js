@@ -11,13 +11,27 @@ export default class App extends Component {
   constructor(){
     super();
     this.state = {
-      city: undefined,
-      country: undefined
+      city: '',
+      country: ''
     }
   }
 
-  getWeather = async () => {
-    const api_call = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&appid=${API_KEY}&units=metric`)
+  getWeather = async (city, country) => {
+    const api_call = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    console.log(api_call)
+  }
+
+  handleChange = (evt) => {
+    this.setState({[evt.target.name]: evt.target.value})
+  }
+
+  handleSubmit = async (evt) => {
+    try {
+      evt.preventDefault();
+      const weatherResult = await this.props.getWeather(this.state.city, this.state.country)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   render(){
