@@ -1,17 +1,16 @@
 import React, {Component} from 'react';
+import {Form, Text} from 'informed'
 
-export default class Form extends Component {
+export default class Informed extends Component {
     render() {
         return (
-            <form onSubmit={this.props.getWeather()}>
-
-                <label htmlFor="city">city:</label>
-                <input onChange={this.props.handleChange} type="text" name="city" />
-
-                <label htmlFor="country">country:</label>
-                <input onChange={this.props.handleChange} type="text" name="country" />
-
-            </form>
+            <Form id="intro-form">
+                <label htmlFor="intro-name">Country:</label>
+                    <Text field="Country" id="intro-name" />
+                <label htmlFor="intro-name">City:</label>
+                    <Text field="City" id="intro-name" />
+                <button type="submit">Submit</button>
+            </Form>
         )
     }
 }

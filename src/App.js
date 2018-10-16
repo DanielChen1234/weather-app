@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import Title from './components/Title'
-import Form from './components/Form'
+import Informed from './components/Form'
 import Weather from './components/Weather'
 
 const API_KEY = 'd61a335d4a31bd2ef2303cb6f9e4a7fa'
@@ -31,7 +31,7 @@ export default class App extends Component {
     return(
       <div>
         <Title />
-        <Form handleChange={this.handleChange} getWeather={this.getWeather}/>
+        <Informed handleChange={this.handleChange} getWeather={this.getWeather}/>
         <Weather />
       </div>
     )
