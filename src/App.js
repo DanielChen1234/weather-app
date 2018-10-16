@@ -16,8 +16,9 @@ export default class App extends Component {
     }
   }
 
-  getWeather = async (city, country) => {
+  getWeather = async (city, country, e) => {
     const api_call = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
+    e.preventDefault()
     console.log(api_call)
   }
 
@@ -25,20 +26,12 @@ export default class App extends Component {
     this.setState({[evt.target.name]: evt.target.value})
   }
 
-  handleSubmit = async (evt) => {
-    try {
-      evt.preventDefault();
-      const weatherResult = await this.props.getWeather(this.state.city, this.state.country)
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
   render(){
+    this.getWeather()
     return(
       <div>
         <Title />
-        <Form />
+        <Form handleChange={this.handleChange} getWeather={this.getWeather}/>
         <Weather />
       </div>
     )
