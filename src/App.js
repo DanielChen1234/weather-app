@@ -22,8 +22,12 @@ export default class App extends Component {
     console.log(api_call)
   }
 
-  handleChange = (evt) => {
-    this.setState({[evt.target.name]: evt.target.value})
+  handleClick = () => {
+    console.log(this.formApi.getState());
+  }
+
+  setFormApi = (formApi) => {
+      this.formApi = formApi;
   }
 
   render(){
@@ -31,7 +35,7 @@ export default class App extends Component {
     return(
       <div>
         <Title />
-        <Informed handleChange={this.handleChange} getWeather={this.getWeather}/>
+        <Informed handleClick={this.handleClick} setFormApi={this.setFormApi} />
         <Weather />
       </div>
     )
